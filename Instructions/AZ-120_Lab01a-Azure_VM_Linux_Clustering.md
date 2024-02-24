@@ -71,8 +71,8 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Abonnement** | *Der Name Ihres Azure-Abonnements*  |
-    | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben.* |
+    | **Abonnement** | *der Name Ihres Azure-Abonnements*  |
+    | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
     | **Name des virtuellen Computers** | *Wählen Sie * **az12001a-vm0** aus |
     | **Region** | *Dieselbe **Azure-Region**, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben* |
     | **Verfügbarkeitsoptionen** | *Wählen* Sie** die Verfügbarkeitsgruppe aus** |
@@ -139,7 +139,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
    
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Abonnement** | *Der Name Ihres Azure-Abonnements*  |
+    | **Abonnement** | *der Name Ihres Azure-Abonnements*  |
     | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
     | **Name des virtuellen Computers** | *Wählen Sie* **az12001a-vm1** |
     | **Region** | *dieselbe Azure-Region, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben* |
@@ -202,7 +202,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
 1. Starten Sie im Azure-Portal eine Bash-Sitzung in Cloud Shell. 
 
-   > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien beizubehalten. Akzeptieren Sie in diesem Fall die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
+   > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien beizubehalten. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
 
 1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um den Wert der Variablen `RESOURCE_GROUP_NAME` auf den Namen der Ressourcengruppe festzulegen, die die Ressourcen enthält, die Sie im vorherigen Vorgang bereitgestellt haben:
 
@@ -629,7 +629,7 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
 
 1. Navigieren Sie vom Blatt der Netzwerkschnittstelle des az12001a-vm0 zum Blatt "IP-Konfigurationen", und zeigen Sie von dort aus das **Blatt "ipconfig1** " an.
 
-1. Legen Sie auf dem **Blatt "ipconfig1** " die private IP-Adresszuweisung auf **"Static"** fest, und speichern Sie die Änderung.
+1. Legen Sie auf dem Blatt **ipconfig1** die private IP-Adresszuweisung auf **Statisch** fest, und speichern Sie die Änderung.
 
 1. Navigieren Sie im Azure-Portal zum Blatt der **Azure-VM az12001a-vm1**.
 
@@ -639,7 +639,7 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
 
 1. Navigieren Sie vom Blatt der Netzwerkschnittstelle des az12001a-vm1 zum Blatt "IP-Konfigurationen", und zeigen Sie von dort aus das **Blatt "ipconfig1** " an.
 
-1. Legen Sie auf dem **Blatt "ipconfig1** " die private IP-Adresszuweisung auf **"Static"** fest, und speichern Sie die Änderung.
+1. Legen Sie auf dem Blatt **ipconfig1** die private IP-Adresszuweisung auf **Statisch** fest, und speichern Sie die Änderung.
 
 
 ### Aufgabe 2: Erstellen und Konfigurieren von Azure Load Balancers für eingehenden Datenverkehr
@@ -691,7 +691,7 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
    | **Name** | **az12001a-lb0-hprobe** |
    | **Protokoll** | **TCP** |
    | **Port** | **62500** |
-   | **Intervall** | **5 ***Sekunden* |
+   | **Intervall** | **5** *Sekunden* |
    | **Fehlerhafter Schwellenwert** | **Zwei *** aufeinanderfolgende Fehler* |
 
 1. Wählen Sie auf dem **Blatt az12001a-lb0** die Option **Lastenausgleichsregeln**aus, wählen Sie **+Hinzufügen aus, und geben Sie auf dem Blatt** "Lastenausgleichsregel hinzufügen"** die folgenden Einstellungen ** an (lassen Sie andere mit ihren Standardwerten):
@@ -802,4 +802,4 @@ In dieser Übung entfernen Sie in dieser Übung bereitgestellte Ressourcen.
 
 1. Schließen Sie den Cloud Shell-Bereich.
 
-> **Result**: Nachdem Sie diese Übung abgeschlossen haben, haben Sie die in dieser Übung verwendeten Ressourcen entfernt.
+> **Result**: Durch den Abschluss dieser Übung haben Sie die in diesem Lab verwendeten Ressourcen entfernt.

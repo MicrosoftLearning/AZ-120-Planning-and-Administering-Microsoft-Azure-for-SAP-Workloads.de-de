@@ -37,7 +37,7 @@ Zeitraum: 30 Minuten
 1. Starten Sie auf dem Lab-Computer einen Webbrowser und navigieren Sie zum Azure-Portal unter `https://portal.azure.com`.
 1. Starten Sie im Azure-Portal in Cloud Shell eine PowerShell-Sitzung. 
 
-    > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien zu speichern. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
+    > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zum Speichern von Cloud Shell-Dateien zu erstellen. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
 
 1. Führen Sie im Azure-Portal im Bereich **Cloud Shell** an der PowerShell-Eingabeaufforderung Folgendes aus: Dabei legt `<Azure_region>` die Ziel-Azure-Region fest, die Sie für dieses Lab verwenden möchten (z. B. `eastus`):
 
@@ -71,8 +71,8 @@ Zeitraum: 30 Minuten
 
 > **Hinweis:** Um dieses Lab abzuschließen (wie beschrieben), benötigen Sie ein Microsoft Azure-Abonnement mit den vCPU-Kontingenten, welche die Bereitstellung der folgenden virtuellen Computer ermöglichen:
 
-- 2 x Standard_E4ds_v4 (jeweils 4 vCPUs und 32 GiB Arbeitsspeicher) oder 2 X Standard_D4ds_v4 (4 vCPUs und jeweils 16 GiB Arbeitsspeicher) VMs für die ASCS-Ebene
-- 2 x Standard_E4ds_v4 (jeweils 4 vCPUs und 32 GiB Arbeitsspeicher) oder 2 X Standard_D4ds_v4 (4 vCPUs und jeweils 16 GiB Arbeitsspeicher) VMs für die Logikschicht 
+- 2 VMs vom Typ „Standard_E4ds_v4“ (jeweils 4 vCPUs und 32 GiB Arbeitsspeicher) oder 2 VMs vom Typ „Standard_D4ds_v4“ (jeweils 4 vCPUs und 16 GiB Arbeitsspeicher) für die ASCS-Ebene
+- 2 VMs vom Typ „Standard_E4ds_v4“ (jeweils 4 vCPUs und 32 GiB Arbeitsspeicher) oder 2 VMs vom Typ „Standard_D4ds_v4“ (jeweils 4 vCPUs und 16 GiB Arbeitsspeicher) für die Logikschicht 
 - 2 x Standard_M64ms (jeweils 64 vCPUs und 1750 GiB Arbeitsspeicher) VMs für die Datenschicht
 
 1. Starten Sie auf dem Lab-Computer einen Webbrowser und navigieren Sie zum Azure-Portal unter `https://portal.azure.com`.
@@ -91,14 +91,14 @@ Zeitraum: 30 Minuten
 
     > **Hinweis:** Um die Namen der Azure-Regionen zu ermitteln, führen Sie in der **Cloud Shell** an der Bash-Eingabeaufforderung `(Get-AzLocation).Location` aus
 
-1. Überprüfen Sie die Ausgabe, um die aktuelle vCPU-Verwendung und den vCPU-Grenzwert zu identifizieren. Stellen Sie sicher, dass der Unterschied zwischen ihnen ausreicht, um vCPUs von Azure-VMs aufzunehmen, die Ihnen in diesem Lab bereitgestellt werden. Berücksichtigen Sie sowohl die VM-familienspezifische als auch die gesamte regionale vCPU-Zahl. 
-1. Wenn die Anzahl der vCPUs nicht ausreicht, schließen Sie den Cloud Shell-Bereich im Azure-Portal im Textfeld **Suchen** und wählen Sie **Kontingente** aus.
+1. Überprüfen Sie die Ausgabe, um die aktuelle vCPU-Nutzung und den vCPU-Grenzwert zu identifizieren. Stellen Sie sicher, dass der Unterschied zwischen ihnen ausreicht, um vCPUs von Azure-VMs aufzunehmen, die Sie in diesem Lab bereitstellen. Berücksichtigen Sie sowohl die für die VM-Familie spezifische Zahl als auch die Zahl für die gesamten regionalen vCPUs. 
+1. Wenn die Anzahl der vCPUs nicht ausreicht, schließen Sie den Cloud Shell-Bereich im Azure-Portal, suchen Sie im Textfeld **Suchen** nach **Kontingente**, und wählen Sie die entsprechende Option aus.
 1. Wählen Sie auf der Seite **Kontingente** die Option **Compute** aus.
-1. Verwenden Sie auf der Seite **Kontingente\| Compute** den **Regionenfilter**, um die Azure-Region auszuwählen, in der Sie Ressourcen in diesem Lab bereitstellen möchten.
-1. Suchen Sie in der Spalte **Kontingentname** den VM-SKU-Namen, der eine Kontingenterhöhung erfordert, und wählen Sie ihn aus. 
+1. Verwenden Sie auf der Seite **Kontingente \| Compute** den Filter **Region**, um die Azure-Region auszuwählen, in der Sie Ressourcen in diesem Lab bereitstellen möchten.
+1. Suchen Sie in der Spalte **Kontingentname** den VM-SKU-Namen, für den eine Kontingenterhöhung erforderlich ist, und wählen Sie ihn aus. 
 1. Überprüfen Sie in derselben Zeile den Eintrag in der Spalte **Anpassbar**. Der nächste Schritt hängt davon ab, ob die Spalte den Eintrag **Ja** oder **Nein** enthält.
 
-   - Wenn der Eintrag auf **Ja** festgelegt ist, wählen Sie das Symbol **Anpassung anfordern** unter der Option **Neue Kontingentanforderung** im Textfeld **Neue Kontingentgrenze** aus, geben Sie die neue Kontingentgrenze ein und wählen Sie dann **Absenden** aus.
+   - Wenn der Eintrag auf **Ja** festgelegt ist, wählen Sie das Symbol **Anpassung anfordern** aus. Geben Sie unter **Neue Kontingentanforderung** im Textfeld **Neue Kontingentgrenze** die neue Kontingentgrenze ein, und wählen Sie dann **Absenden** aus.
    - Wenn der Eintrag auf **Nein** festgelegt ist, wählen Sie das Symbol **Zugriff anfordern oder Empfehlungen erhalten** und dann im Bereich **Kontingentempfehlungen** die Option **Support kontaktieren** und dann **Weiter** aus. 
 
 1. Geben Sie auf der Registerkarte **Problembeschreibung** der Seite **Neue Supportanfrage** die folgenden Einstellungen an, und wählen Sie dann **Weiter** aus:
@@ -111,9 +111,9 @@ Zeitraum: 30 Minuten
     |Kontingenttyp|**Abonnementgrenzen für Compute/VM (Kerne/vCPUs) erhöhen**|
 
 1. Wählen Sie auf der Registerkarte **Weitere Details** die Option **Details eingeben** aus.
-1. Wählen Sie auf der Registerkarte **Kontingentdetails** in der Dropdownliste **Bereitstellungsmodell** die Option **Ressourcen-Manager**, in der Dropdownliste **Speicherorte** wählen Sie die Ziel-Azure-Region aus, unter der Dropdownliste **Kontingente** wählen Sie die Azure-VM-Serie aus, für die Sie die Kontingentgrenzen erhöhen müssen, geben Sie im Textfeld **Neue Grenze** die neue Kontingentgrenze ein und wählen Sie dann **Speichern und Fortsetzen** aus.
-1. Zurück auf der Registerkarte **Weitere Details** wählen Sie auf der Registerkarte **Erweiterte Diagnoseinformationen** die Option **Ja (Empfohlen)** aus.
-1. Wählen Sie im Abschnitt **Supportmethode** entweder **E-Mail** oder **Telefon** als bevorzugte Kontaktmethode aus und wählen Sie dann **Weiter** aus.
+1. Wählen Sie auf der Registerkarte **Kontingentdetails** in der Dropdownliste **Bereitstellungsmodell** die Option **Ressourcen-Manager** aus. Wählen Sie in der Dropdownliste **Standorte** die Azure-Zielregion aus, und wählen Sie in der Dropdownliste **Kontingente** die Azure-VM-Serie aus, für die Sie die Kontingentgrenzen erhöhen müssen. Geben Sie im Textfeld **Neue Grenze** die neue Kontingentgrenze ein, und wählen Sie dann **Speichern und fortfahren** aus.
+1. Navigieren Sie zurück zur Registerkarte **Weitere Details**, und wählen Sie auf der Registerkarte **Erweiterte Diagnoseinformationen** die Option **Ja (Empfohlen)** aus.
+1. Wählen Sie im Abschnitt **Supportmethode** entweder **E-Mail** oder **Telefon** als bevorzugte Kontaktmethode aus, und wählen Sie dann **Weiter** aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
 
     > **Hinweis:** Warten Sie, bis die Anforderung zum Erhöhen von Kontingentbeschränkungen erfolgreich abgeschlossen wurde, bevor Sie die Bereitstellung von Lab Automate mithilfe von Azure Center für SAP-Lösungen starten.

@@ -50,7 +50,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computekomponenten bereit, die 
 
 1. Starten Sie im Azure-Portal eine Bash-Sitzung in Cloud Shell. 
 
-    > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien zu speichern. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
+    > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien beizubehalten. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
 
 1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um die Azure-Region anzugeben, die Verfügbarkeitszonen unterstützt und wo Sie Ressourcen für dieses Lab erstellen möchten (ersetzen Sie `<region>` durch den Namen der Azure-Region, die Verfügbarkeitszonen unterstützt):
 
@@ -166,7 +166,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computekomponenten bereit, die 
     | **Möchten Sie eine vorhandene Windows Server-Lizenz verwenden?** | **Nein** |
     | **Typ des Betriebssystemdatenträgers** | **HDD Standard** |
     | **Virtuelles Netzwerk** | **az12003a-sap-vnet** |
-    | **Subnetzname** | *ein neues Subnetz mit dem Namen* **BastionSubnet** |
+    | **Subnetzname** | *ein neues Subnetz namens* **BastionSubnet** |
     | **Subnetzadressbereich** | **10.3.255.0/24** |
     | **Öffentliche IP-Adresse** | *eine neue IP-Adresse mit dem Namen* **az12003a-vm0-ip** |
     | **NIC-Netzwerksicherheitsgruppe** | **Grundlegend**  |
@@ -590,13 +590,13 @@ In dieser Übung konfigurieren Sie Clustering auf Azure VMs unter Linux, um eine
 
 Dauer: 10 Minuten
 
-In dieser Übung entfernen Sie in diesem Lab bereitgestellte Ressourcen.
+In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Ressourcen.
 
 #### Aufgabe 1: Cloud Shell öffnen
 
 1. Klicken Sie oben im Portal auf das **Cloud Shell**-Symbol, um den Cloud Shell-Bereich zu öffnen und wählen Sie Bash als Shell aus.
 
-1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um den Wert der Variablen `RESOURCE_GROUP_PREFIX` auf das Präfix des Namens der Ressourcengruppe festzulegen, welche die in dieser Übung bereitgestellten Ressourcen enthält:
+1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um den Wert der Variablen `RESOURCE_GROUP_PREFIX` auf das Präfix des Namens der Ressourcengruppe festzulegen, die die in dieser Übung bereitgestellten Ressourcen enthält:
 
     ```cli
     RESOURCE_GROUP_PREFIX='az12003a-'
@@ -608,11 +608,11 @@ In dieser Übung entfernen Sie in diesem Lab bereitgestellte Ressourcen.
     az group list --query "[?starts_with(name,'$RESOURCE_GROUP_PREFIX')]".name --output tsv
     ```
 
-1. Stellen Sie sicher, dass die Ausgabe nur die Ressourcengruppe enthält, die Sie in dieser Übung erstellt haben. Diese Ressourcengruppe mit allen Ressourcen wird in der nächsten Aufgabe gelöscht.
+1. Stellen Sie sicher, dass die Ausgabe nur die Ressourcengruppe enthält, die Sie in dieser Übung erstellt haben. Diese Ressourcengruppe mit allen Ressourcen wird im nächsten Vorgang gelöscht.
 
 #### Aufgabe 2: Löschen der Ressourcengruppen
 
-1. Führen Sie im Bereich Cloud Shell den folgenden Befehl aus, um die Ressourcengruppe und ihre Ressourcen zu löschen.
+1. Führen Sie im Bereich Cloud Shell den folgenden Befehl aus, um die AsyncProcessor-Ressourcengruppe zu löschen.
 
     ```cli
     az group list --query "[?starts_with(name,'$RESOURCE_GROUP_PREFIX')]".name --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
@@ -620,4 +620,4 @@ In dieser Übung entfernen Sie in diesem Lab bereitgestellte Ressourcen.
 
 1. Schließen Sie den Cloud Shell-Bereich.
 
-> **Result**: Nachdem Sie diese Übung abgeschlossen haben, haben Sie die in diesem Lab verwendeten Ressourcen entfernt.
+> **Result**: Durch den Abschluss dieser Übung haben Sie die in diesem Lab verwendeten Ressourcen entfernt.
