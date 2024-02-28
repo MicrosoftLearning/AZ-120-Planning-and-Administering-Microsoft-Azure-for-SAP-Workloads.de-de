@@ -260,9 +260,9 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
 #### Aufgabe 3: Bereitstellen von Azure Bastion 
 
-> **Hinweis:** Azure Bastion ermöglicht die Verbindungsherstellung mit den virtuellen Azure-Computern ohne öffentliche Endpunkte, die Sie in der vorherigen Aufgabe dieser Übung bereitgestellt haben, und bietet gleichzeitig Schutz vor Brute-Force-Angriffen, die auf Anmeldeinformationen auf Betriebssystemebene abzielen.
+> **Hinweis:** Azure Bastion ermöglicht das Herstellen einer Verbindung mit den Azure-VMs ohne öffentliche Endpunkte, die Sie in der vorherigen Aufgabe dieser Übung bereitgestellt haben, und bietet gleichzeitig Schutz vor Brute-Force-Angriffen, die auf Anmeldeinformationen auf Betriebssystemebene abzielen.
 
-> **Hinweis:** Stellen Sie sicher, dass bei Ihrem Browser die Popupfunktion aktiviert ist.
+> **Hinweis:** Um Azure Bastion zu verwenden, müssen Sie sicherstellen, dass in Ihrem Browser die Popupfunktion aktiviert ist.
 
 1. Öffnen Sie im Browserfenster mit dem Azure-Portal einen weiteren Tab, und navigieren Sie zum [**Azure-Portal**](https://portal.azure.com).
 1. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie rechts neben dem Textfeld für die Suche das Symbolleistensymbol auswählen.
@@ -312,7 +312,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Suchen Sie auf Ihrem Labcomputer im Azure-Portal nach **Virtuelle Computer** und wählen Sie diese Option aus. Wählen Sie anschließend auf dem Blatt **Virtuelle Computer** den Eintrag **az12001a-cl-vm0** aus. Dadurch wird das **Blatt az12001a-vm0** geöffnet.
 
-1. Wählen Sie auf dem **Blatt "az12001a-vm0"** die Option **"Verbinden" **aus, wählen Sie** im Dropdownmenü "Verbinden über Bastion**" auf der **Registerkarte "Bastion** " der **az12001a-vm0**aus, lassen Sie den **Authentifizierungstyp** auf **"VM-Kennwort**" festgelegt, geben Sie die Anmeldeinformationen an, die Sie beim Bereitstellen des **virtuellen Computers az12001a-vm0** festgelegt haben, lassen Sie das Kontrollkästchen **"In neuer Browserregisterkarte öffnen"** aktiviert, und wählen Sie "Verbinden" **aus**:
+1. Wählen Sie auf dem Blatt **az12001a-vm0** die Option **Verbinden** und anschließend auf der Registerkarte **Bastion** von **az12001a-vm0** im Dropdownmenü die Option **Über Bastion verbinden** aus. Lassen Sie den **Authentifizierungstyp** auf **VM-Kennwort** festgelegt, geben Sie die Anmeldeinformationen an, die Sie beim Bereitstellen der VM **az12001a-vm0** festgelegt haben, lassen Sie das Kontrollkästchen **In neuer Browserregisterkarte öffnen** aktiviert, und wählen Sie **Verbinden** aus.
 
 1. Wiederholen Sie die beiden vorherigen Schritte, um eine Verbindung über Bastion mit der **Azure-VM az12001a-vm1** herzustellen.
 
