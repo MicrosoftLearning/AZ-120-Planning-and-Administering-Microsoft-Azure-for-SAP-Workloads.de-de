@@ -133,19 +133,19 @@ In dieser Übung stellen Sie Azure-Infrastrukturcomputekomponenten bereit, die z
     | **Region** | *dieselbe Azure-Region, in der Sie die Azure-VMs in der vorherigen Aufgabe bereitgestellt haben* |
     | **Verfügbarkeitsoptionen** | **Verfügbarkeitszone** |
     | **Verfügbarkeitszone** | **Zone 1** |
+    | **Sicherheitstyp** | **Standard** |
     | **Image** | *Auswählen:* **Windows Server 2022 Datacenter: Azure Edition – Gen2** |
     | **Größe** | **Standard D4s v3** |
     | **Benutzername** | *denselben Benutzernamen, den Sie bei der Bereitstellung der Bicep-Vorlage weiter oben in dieser Übung angegeben haben* |
     | **Kennwort** | *dasselbe Kennwort, das Sie bei der Bereitstellung der Bicep-Vorlage weiter oben in dieser Übung angegeben haben* |
-    | **Öffentliche Eingangsports** | **Ausgewählte Ports zulassen** |
-    | **Ausgewählte eingehende Ports** | **RDP (3389)** |
+    | **Öffentliche Eingangsports** | **None** |
     | **Möchten Sie eine vorhandene Windows Server-Lizenz verwenden?** | **Nein** |
     | **Typ des Betriebssystemdatenträgers** | **SSD Premium** |
     | **Virtuelles Netzwerk** | **adVNET** |
     | **Subnetzname** | *ein neues Subnetz namens* **clSubnet** |
     | **Subnetzadressbereich** | **10.0.1.0/24** |
-    | **Öffentliche IP-Adresse** | *eine neue IP-Adresse namens* **az12001b-cl-vm0-ip** |
-    | **NIC-Netzwerksicherheitsgruppe** | **Grundlegend**  |
+    | **Öffentliche IP-Adresse** | **Keine** |
+    | **NIC-Netzwerksicherheitsgruppe** | **Keine**  |
     | **Aktivieren des beschleunigten Netzwerkbetriebs** | **Ein** |
     | **Optionen für den Lastenausgleich** | **Keine** |
     | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | **Deaktiviert** |
@@ -168,18 +168,18 @@ In dieser Übung stellen Sie Azure-Infrastrukturcomputekomponenten bereit, die z
     | **Region** | *dieselbe Azure-Region, in der Sie die erste Azure-VM mit **Windows Server 2022 Datacenter: Azure Edition – Gen2** in dieser Aufgabe verwendet haben* |
     | **Verfügbarkeitsoptionen** | **Verfügbarkeitszone** |
     | **Verfügbarkeitszone** | **Zone 2** |
+    | **Sicherheitstyp** | **Standard** |
     | **Image** | *Auswählen:* **Windows Server 2022 Datacenter: Azure Edition – Gen2** |
     | **Größe** | **Standard D4s v3** |
     | **Benutzername** | *denselben Benutzernamen, den Sie bei der Bereitstellung der Bicep-Vorlage weiter oben in dieser Übung angegeben haben* |
     | **Kennwort** | *dasselbe Kennwort, das Sie bei der Bereitstellung der Bicep-Vorlage weiter oben in dieser Übung angegeben haben* |
-    | **Öffentliche Eingangsports** | **Ausgewählte Ports zulassen** |
-    | **Ausgewählte eingehende Ports** | **RDP (3389)** |
+    | **Öffentliche Eingangsports** | **None** |
     | **Möchten Sie eine vorhandene Windows Server-Lizenz verwenden?** | **Nein** |
     | **Typ des Betriebssystemdatenträgers** | **SSD Premium** |
     | **Virtuelles Netzwerk** | **adVNET** |
     | **Subnetzname** | **clSubnet** |
-    | **Öffentliche IP-Adresse** | *eine neue IP-Adresse namens* **az12001b-cl-vm1-ip** |
-    | **NIC-Netzwerksicherheitsgruppe** | **Grundlegend**  |
+    | **Öffentliche IP-Adresse** | **Keine** |
+    | **NIC-Netzwerksicherheitsgruppe** | **Keine**  |
     | **Aktivieren des beschleunigten Netzwerkbetriebs** | **Ein** |
     | **Optionen für den Lastenausgleich** | **Keine** |
     | **Mit Azure AD anmelden** | **Deaktiviert** |
@@ -257,8 +257,47 @@ In dieser Übung stellen Sie Azure-Infrastrukturcomputekomponenten bereit, die z
 
 1. Speichern Sie die Änderungen. 
 
-> **Result**: Durch den Abschluss dieser Übung haben Sie die Azure-Computeressourcen bereitgestellt, die erforderlich sind, um hochverfügbare SAP NetWeaver-Bereitstellungen zu unterstützen.
+#### Aufgabe 4: Bereitstellen von Azure Bastion 
 
+> **Hinweis:** Azure Bastion ermöglicht das Herstellen einer Verbindung mit den Azure-VMs ohne öffentliche Endpunkte, die Sie in der vorherigen Aufgabe dieser Übung bereitgestellt haben, und bietet gleichzeitig Schutz vor Brute-Force-Angriffen, die auf Anmeldeinformationen auf Betriebssystemebene abzielen.
+
+> **Hinweis:** Um Azure Bastion zu verwenden, müssen Sie sicherstellen, dass in Ihrem Browser die Popupfunktion aktiviert ist.
+
+1. Öffnen Sie im Browserfenster mit dem Azure-Portal einen weiteren Tab, und navigieren Sie zum [**Azure-Portal**](https://portal.azure.com).
+1. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie rechts neben dem Textfeld für die Suche das Symbolleistensymbol auswählen.
+1. Führen Sie aus der PowerShell-Sitzung im Cloud Shell-Bereich den folgenden Code aus, um ein Subnetz namens **AzureBastionSubnet** zum virtuellen Netzwerk namens **az12001a-25-vnet** hinzuzufügen, das Sie in einer vorherigen Übung erstellt haben:
+
+   ```powershell
+   $resourceGroupName = 'az12001b-cl-RG'
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name 'adVNET'
+   $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
+     -Name 'AzureBastionSubnet' `
+     -AddressPrefix 10.0.255.0/24 `
+     -VirtualNetwork $vnet
+   $vnet | Set-AzVirtualNetwork
+   ```
+
+1. Schließen Sie den Cloud Shell-Bereich.
+1. Suchen Sie im Azure-Portal nach **Bastions**, wählen Sie diese Option aus, und wählen Sie auf dem Blatt **Bastions** die Option **+ Erstellen** aus.
+1. Geben Sie auf der Registerkarte **Grundeinstellungen** des Blatts **Bastion erstellen** die folgenden Einstellungen an, und wählen Sie **Überprüfen + erstellen** aus:
+
+   |Einstellung|Wert|
+   |---|---|
+   |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden.|
+   |Resource group|**az12001b-cl-RG**|
+   |Name|**az12001b-bastion**|
+   |Region|Die gleiche Azure-Region, in der Sie die Ressourcen in den vorherigen Aufgaben dieser Übung bereitgestellt haben|
+   |Tarif|**Grundlegend**|
+   |Virtuelles Netzwerk|**adVNET**|
+   |Subnetz|**AzureBastionSubnet (10.0.255.0/24)**|
+   |Öffentliche IP-Adresse|**Neu erstellen**|
+   |Name der öffentlichen IP-Adresse|**adVNET-ip**|
+
+1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** des Blatts **Bastion erstellen** die Option **Erstellen** aus:
+
+   > **Hinweis:** Warten Sie nicht, bis die Bereitstellung abgeschlossen ist, sondern fahren Sie mit der nächsten Aufgabe dieser Übung fort. Die Bereitstellung kann ungefähr 5 Minuten dauern.
+
+> **Result**: Durch den Abschluss dieser Übung haben Sie die Azure-Computeressourcen bereitgestellt, die erforderlich sind, um hochverfügbare SAP NetWeaver-Bereitstellungen zu unterstützen.
 
 ## Übung 2: Konfigurieren des Betriebssystems von Azure-VMs mit Windows Server 2022 Datacenter für die Unterstützung einer hochverfügbaren SAP NetWeaver-Installation
 
@@ -296,16 +335,15 @@ Duration (Dauer): 40 Minuten
 
 1. Warten Sie, bis das Skript abgeschlossen ist, bevor Sie mit der nächsten Aufgabe fortfahren.
 
-
 ### Aufgabe 2: Konfigurieren des Speichers auf Azure-VMs mit Windows Server 2022 zur Unterstützung einer hochverfügbaren SAP NetWeaver-Installation
 
 1. Navigieren Sie im Azure-Portal zum Blatt der VM **az12001b-cl-vm0**, die Sie in der ersten Übung dieses Labs bereitgestellt haben.
 
-1. Stellen Sie über das Blatt **az12001b-cl-vm0** eine Verbindung mit dem VM-Gastbetriebssystem über einen Remotedesktop her. Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie die Anmeldeinformationen des Administratorbenutzerkontos an, das Sie beim Bereitstellen der Bicep-Vorlage in der ersten Übung dieses Labs angegeben haben. 
+1. Wählen Sie auf dem Blatt **az12001b-cl-vm0** die Option **Verbinden** und anschließend auf der Registerkarte **Bastion** von **az12001b-cl-vm0** im Dropdownmenü die Option **Über Bastion verbinden** aus. Lassen Sie den **Authentifizierungstyp** auf **VM-Kennwort** festgelegt, geben Sie die Anmeldeinformationen an, die Sie beim Bereitstellen der VM **az12001b-cl-vm0** festgelegt haben, lassen Sie das Kontrollkästchen **In neuer Browserregisterkarte öffnen** aktiviert, und wählen Sie **Verbinden** aus.
 
     > **Hinweis:** Stellen Sie sicher, dass Sie sich mit dem **ADATUM**-Domänenkonto und nicht mit dem Konto auf Betriebssystemebene anmelden (d. h., dass dem Benutzernamen das Präfix **ADATUM\\** vorangestellt ist).
 
-1. Navigieren Sie in der RDP-Sitzung zu „az12001b-cl-vm0“, und dann im Server-Manager zum Knoten **Datei- und Speicherdienste** -> **Server**. 
+1. Navigieren Sie in der Bastion-Sitzung zu „az12001b-cl-vm0“ und dann im Server-Manager zum Knoten **Datei- und Speicherdienste** -> **Server**. 
 
 1. Navigieren Sie zur Ansicht **Speicherpools**, und überprüfen Sie, ob alle Datenträger angezeigt werden, die Sie in der vorherigen Übung an die Azure-VM angefügt haben.
 
@@ -369,7 +407,7 @@ Duration (Dauer): 40 Minuten
 
 ### Aufgabe 3: Vorbereiten der Konfiguration des Failoverclusterings auf Azure-VMs mit Windows Server 2022 zur Unterstützung einer hochverfügbaren SAP NetWeaver-Installation
 
-1. Starten Sie in der RDP-Sitzung auf „az12001b-cl-vm0“ eine Windows PowerShell ISE-Sitzung, und installieren Sie die Features für Failoverclustering und Remoteverwaltungstools sowohl auf „az12001b-cl-vm0“ als auch auf „az12001b-cl-vm1“, indem Sie Folgendes ausführen:
+1. Starten Sie in der Bastion-Sitzung auf „az12001b-cl-vm0“ eine Windows PowerShell ISE-Sitzung, und installieren Sie die Features für Failoverclustering und Remoteverwaltungstools sowohl auf „az12001b-cl-vm0“ als auch auf „az12001b-cl-vm1“, indem Sie Folgendes ausführen:
 
     ```
     $nodes = @('az12001b-cl-vm1', 'az12001b-cl-vm0')
@@ -403,15 +441,15 @@ Duration (Dauer): 40 Minuten
 
 1. Navigieren Sie im Azure-Portal zum Blatt der VM **az12001b-cl-vm0**, die Sie in der ersten Übung dieses Labs bereitgestellt haben.
 
-1. Stellen Sie über das Blatt **az12001b-cl-vm0** eine Verbindung mit dem VM-Gastbetriebssystem über einen Remotedesktop her. Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie die Anmeldeinformationen des Administratorbenutzerkontos an, das Sie beim Bereitstellen der Bicep-Vorlage in der ersten Übung dieses Labs angegeben haben.
+1. Stellen Sie über das Blatt **az12001b-cl-vm0** eine Verbindung mit dem VM-Gastbetriebssystem über Azure Bastion her. Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie die Anmeldeinformationen des Administratorbenutzerkontos an, das Sie beim Bereitstellen der Bicep-Vorlage in der ersten Übung dieses Labs angegeben haben.
 
-1. Starten Sie in der RDP-Sitzung für „az12001b-cl-vm0“ in Server-Manager über das Menü **Extras** das **Active Directory-Verwaltungscenter**.
+1. Starten Sie in der Bastion-Sitzung für „az12001b-cl-vm0“ im Server-Manager über das Menü **Extras** das **Active Directory Admin Center**.
 
 1. Erstellen Sie im Active Directory-Verwaltungscenter eine neue Organisationseinheit namens **Cluster** im Stammverzeichnis der Domäne „adatum.com“.
 
 1. Verschieben Sie im Active Directory-Verwaltungscenter die Computerkonten von **az12001b-cl-vm0** und **az12001b-cl-vm1** aus dem Container **Computer** in die Organisationseinheit **Cluster**.
 
-1. Starten Sie in der RDP-Sitzung für „az12001b-cl-vm0“ eine Windows PowerShell ISE-Sitzung, und erstellen Sie einen neuen Cluster, indem Sie Folgendes ausführen:
+1. Starten Sie in der Bastion-Sitzung für „az12001b-cl-vm0“ eine Windows PowerShell ISE-Sitzung, und erstellen Sie einen neuen Cluster, indem Sie Folgendes ausführen:
 
     ```
     $nodes = @('az12001b-cl-vm0','az12001b-cl-vm1')
@@ -419,7 +457,7 @@ Duration (Dauer): 40 Minuten
     New-Cluster -Name az12001b-cl-cl0 -Node $nodes -NoStorage -StaticAddress 10.0.1.6
     ```
 
-1. Wechseln Sie innerhalb der RDP-Sitzung für „az12001b-cl-vm0“ zur Konsole **Active Directory-Verwaltungscenter**.
+1. Wechseln Sie innerhalb der Bastion-Sitzung für „az12001b-cl-vm0“ zur Konsole **Active Directory Admin Center**.
 
 1. Navigieren Sie im Active Directory-Verwaltungscenter zur Organisationseinheit **Cluster**, und öffnen Sie deren **Eigenschaftenfenster**. 
 
@@ -465,11 +503,11 @@ Duration (Dauer): 40 Minuten
     Set-ClusterQuorum -CloudWitness -AccountName $cwStorageAccountName -AccessKey $cwStorageAccountKey
     ```
 
-1. Zur Überprüfung der resultierenden Konfiguration starten Sie in der RDP-Sitzung für „az12001b-cl-vm0“ über das Menü **Extras** in Server-Manager den **Failovercluster-Manager**.
+1. Zur Überprüfung der resultierenden Konfiguration starten Sie in der Bastion-Sitzung für „az12001b-cl-vm0“ über das Menü **Extras** im Server-Manager den **Failovercluster-Manager**.
 
 1. Überprüfen Sie in der Konsole des **Failovercluster-Managers** die Clusterkonfiguration **az12001b-cl-cl0**, einschließlich der Knoten sowie der Zeugen- und Netzwerkeinstellungen. Sie sehen, dass der Cluster keinen freigegebenen Speicher hat.
 
-1. Beenden Sie die RDP-Sitzung für „az12001b-cl-vm0“.
+1. Beenden Sie die Bastion-Sitzung auf „az12001b-cl-vm0“.
 
 > **Result**: Nachdem Sie diese Übung abgeschlossen haben, haben Sie das Betriebssystem von Azure-VMs mit Windows Server 2022 konfiguriert, um eine hochverfügbare SAP NetWeaver-Installation zu unterstützen.
 
@@ -496,23 +534,23 @@ In dieser Übung implementieren Sie Azure Load Balancer-Instanzen, um gruppierte
 
 1. Heben Sie über das Blatt **az12001b-cl-vm1-ip** zuerst die Zuordnung der öffentlichen IP-Adresse zur Netzwerkschnittstelle auf, und löschen Sie sie dann.
 
-1. Navigieren Sie im Azure-Portal zum Blatt der Azure-VM **az12001a-vm0**.
+1. Navigieren Sie im Azure-Portal zum Blatt der Azure-VM **az12001b-cl-vm0**.
 
-1. Navigieren Sie vom Blatt **az12001a-vm0** zum Blatt **Netzwerk**. 
+1. Navigieren Sie vom Blatt **az12001b-cl-vm0** zum zugehörigen Blatt **Netzwerk**. 
 
-1. Navigieren Sie vom Blatt **az12001a-vm0 – Netzwerk** zur Netzwerkschnittstelle von „az12001a-vm0“. 
+1. Navigieren Sie vom Blatt **az12001b-cl-vm0 – Netzwerk** zur Netzwerkschnittstelle von „az12001b-cl-vm0“. 
 
-1. Navigieren Sie vom Blatt der Netzwerkschnittstelle von „az12001a-vm0“ zum Blatt „IP-Konfigurationen“, und öffnen Sie dort das Blatt **ipconfig1**.
+1. Navigieren Sie vom Blatt der Netzwerkschnittstelle von „az12001b-cl-vm0“ zum Blatt „IP-Konfigurationen“, und öffnen Sie dort das Blatt **ipconfig1**.
 
 1. Legen Sie auf dem Blatt **ipconfig1** die private IP-Adresszuweisung auf **Statisch** fest, und speichern Sie die Änderung.
 
-1. Navigieren Sie im Azure-Portal zum Blatt der Azure-VM **az12001a-vm1**.
+1. Navigieren Sie im Azure-Portal zum Blatt der Azure-VM **az12001b-cl-vm1**.
 
-1. Navigieren Sie vom Blatt **az12001a-vm1** zum Blatt **Netzwerk**. 
+1. Navigieren Sie vom Blatt **az12001b-cl-vm1** zum Blatt **Netzwerk**. 
 
-1. Navigieren Sie vom Blatt **az12001a-vm1 – Netzwerk** zur Netzwerkschnittstelle von „az12001a-vm1“. 
+1. Navigieren Sie vom Blatt **az12001b-cl-vm1 – Netzwerk** zur Netzwerkschnittstelle von „az12001b-cl-vm1“. 
 
-1. Navigieren Sie vom Blatt der Netzwerkschnittstelle von „az12001a-vm1“ zum Blatt „IP-Konfigurationen“, und öffnen Sie dort das Blatt **ipconfig1**.
+1. Navigieren Sie vom Blatt der Netzwerkschnittstelle von „az12001b-cl-vm1“ zum Blatt „IP-Konfigurationen“, und öffnen Sie dort das Blatt **ipconfig1**.
 
 1. Legen Sie auf dem Blatt **ipconfig1** die private IP-Adresszuweisung auf **Statisch** fest, und speichern Sie die Änderung.
 
@@ -662,52 +700,6 @@ In dieser Übung implementieren Sie Azure Load Balancer-Instanzen, um gruppierte
     | **Leerlaufzeitüberschreitung (Minuten)** | **4** |
     | **TCP-Zurücksetzung** | **Disabled** |
     | **Floating IP (Direct Server Return)** | **Disabled** |
-
-### Aufgabe 4: Bereitstellen eines Bastion Hosts
-
-   > **Hinweis:** Da zwei gruppierte Azure-VMs nicht mehr direkt über das Internet zugänglich sind, stellen Sie eine Azure-VM mit Windows Server 2022 Datacenter bereit, die als Bastion Host dient. 
-
-1. Navigieren Sie auf dem Lab-Computer im Azure-Portal zum Blatt **Virtuelle Computer**, klicken Sie auf **+ Erstellen**, und wählen Sie im Dropdownmenü **Azure-VM** aus.
-
-1. Initiieren Sie auf dem Blatt **Virtuellen Computer erstellen** die Bereitstellung einer Azure-VM mit **Windows Server 2022 Datacenter: Azure Edition – Gen2** mit den folgenden Einstellungen bereit:
-     
-    | Einstellung | Wert |
-    |   --    |  --   |
-    | **Abonnement** | *der Name Ihres Azure-Abonnements*  |
-    | **Ressourcengruppe** | *der Namen der Ressourcengruppe, die das Azure-VM-Paar mit **Windows Server 2022 Datacenter Azure Edition – Gen2** enthält, das Sie in der ersten Übung dieses Labs bereitgestellt haben* |
-    | **Name des virtuellen Computers** | **az12001b-vm2** |
-    | **Region** | *dieselbe Azure-Region, in der Sie Azure-VMs in der ersten Übung dieses Labs bereitgestellt haben* |
-    | **Verfügbarkeitsoptionen** | **Keine Infrastrukturredundanz erforderlich** |
-    | **Image** | *Auswählen:* **Windows Server 2022 Datacenter: Azure Edition – Gen2** |
-    | **Größe** | **Standard DS1 v2*** oder ähnlich* |
-    | **Benutzername** | *derselbe Benutzernamen, den Sie bei der Bereitstellung der Bicep-Vorlage in der ersten Übung dieses Labs angegeben haben* |
-    | **Kennwort** | *dasselbe Kennwort, das Sie bei der Bereitstellung der Bicep-Vorlage in der ersten Übung dieses Labs angegeben haben* |
-    | **Öffentliche Eingangsports** | **Ausgewählte Ports zulassen** |
-    | **Ausgewählte eingehende Ports** | **RDP (3389)** |
-    | **Möchten Sie eine vorhandene Windows Server-Lizenz verwenden?** | **Nein** |
-    | **Typ des Betriebssystemdatenträgers** | **HDD Standard** |
-    | **Virtuelles Netzwerk** | **adVNET** |
-    | **Subnetzname** | *ein neues Subnetz namens* **BastionSubnet** |
-    | **Subnetzadressbereich** | **10.0.255.0/24** |
-    | **Öffentliche IP-Adresse** | *eine neue IP-Adresse namens* **az12001b-vm2-ip** |
-    | **NIC-Netzwerksicherheitsgruppe** | **Grundlegend**  |
-    | **Öffentliche Eingangsports** | **Ausgewählte Ports zulassen** |
-    | **Ausgewählte eingehende Ports** | **RDP (3389)** |
-    | **Aktivieren des beschleunigten Netzwerkbetriebs** | **Deaktiviert** |
-    | **Optionen für den Lastenausgleich** | **Keine** |
-    | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | **Deaktiviert** |
-    | **Mit Azure AD anmelden** | **Deaktiviert** |
-    | **Automatisches Herunterfahren aktivieren** | **Deaktiviert** |
-    | **Startdiagnose** | **Deaktivieren** |
-    | **Diagnose des Gastbetriebssystems aktivieren** | **Deaktiviert** |
-    | **Erweiterungen** | *Keine* |
-    | **Tags** | *Keine* |
-
-1. Warten Sie, bis die Bereitstellung abgeschlossen wurde. Dies sollte einige Minuten dauern.
-
-1. Stellen Sie über RDP eine Verbindung mit der neu bereitgestellten Azure-VM her. 
-
-1. Stellen Sie innerhalb der RDP-Sitzung für „az12001b-vm2“ sicher, dass Sie eine RDP-Sitzung sowohl für „az12001b-cl-vm0“ als auch für „az12001b-cl-vm1“ über deren private IP-Adressen (10.0.1.4 bzw. 10.0.1.5) einrichten können. 
 
 > **Result**: Durch den Abschluss dieser Übung haben Sie die Azure-Netzwerkressourcen bereitgestellt, die erforderlich sind, um hochverfügbare SAP NetWeaver-Bereitstellungen zu unterstützen.
 
