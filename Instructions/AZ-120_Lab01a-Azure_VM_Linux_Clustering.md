@@ -49,15 +49,15 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
 1. Verwenden Sie im Azure-Portal oben auf der Azure-Portalseite das **Textfeld "Ressourcen, Dienste und Dokumente** suchen" und navigieren Sie zum Blatt " **Näherungplatzierungsgruppen"**, und wählen Sie auf dem **Blatt "Näherungsplatzierungsgruppen"** die Option **"+erstellen**" aus.
 
-1. Geben Sie auf der **Registerkarte "Grundlagen"** des Blatts **"Näherungsplatzierungsgruppen** erstellen" die folgenden Einstellungen an, und wählen Sie " **Überprüfen+ erstellen**" aus:
+1. Geben Sie auf der Registerkarte **Grundlagen** des Blatts **Näherungsplatzierungsgruppen erstellen** die folgenden Einstellungen an, und wählen Sie **Überprüfen+ erstellen** aus (andere mit Standardwerten belassen):
 
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Abonnement** | *Der Name Ihres Azure-Abonnements*  |
-    | Abschnitt **Ressourcengruppe** | Wählen Sie **Neu erstellen** aus, geben Sie **az12001a-RG** ein und wählen Sie dann **OK** |
-    | **Region** | *Die Azure-Region, in der Sie über ausreichende vCPU-Kontingente verfügen* |
-    | **Name der Näherungsplatzierungsgruppe** | Wählen Sie **az12001a-ppg** aus |
-    | **Absicht-Details** | **Standard D4s v3** |
+    | **Abonnement** | Der Name Ihres Azure-Abonnements |
+    | Abschnitt **Ressourcengruppe** | Wählen Sie **Neu erstellen** aus, geben Sie **az12001a-RG** ein und wählen Sie dann **OK** aus. |
+    | **Name der Näherungsplatzierungsgruppe** | **az12001a-ppg** |
+    | **Region** | Die Azure-Region, in der Sie über ausreichende vCPU-Kontingente verfügen |
+    | **VM-Größen** | **Standard D4s v3** |
 
    > **Hinweis:** Erwägen der Verwendung der Regionen **USA, Osten** oder **USA, Osten 2** für die Bereitstellung Ihrer Ressourcen
 
@@ -71,23 +71,23 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Abonnement** | *der Name Ihres Azure-Abonnements*  |
-    | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
-    | **Name des virtuellen Computers** | *Wählen Sie * **az12001a-vm0** aus |
-    | **Region** | *Dieselbe **Azure-Region**, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben* |
-    | **Verfügbarkeitsoptionen** | *Wählen* Sie** die Verfügbarkeitsgruppe aus** |
-    | **Verfügbarkeitsgruppe** | *ein neuer Verfügbarkeitssatz namens***az12001a-avset***mit 2 Fehlerdomänen und 5 Updatedomänen* |
-    | **Sicherheitstyp** | *Wählen*** Sie Standard aus** |
-    | **Image** | *Wählen Sie***SUSE Enterprise Linux for SAP 15 SP3 - BYOS - x64 Gen 2 aus** |
-    | **Mit Azure Spot-Rabatt ausführen** | **Nein** |
-    | **Größe** | **Standard D4s v3** |
+    | **Abonnement** | der Name Ihres Azure-Abonnements |
+    | **Ressourcengruppe** | Name der zuvor in dieser Aufgabe erstellten Ressourcengruppe |
+    | **Name des virtuellen Computers** | **az12001a-vm0** |
+    | **Region** | Name derselben Azure-Region, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben |
+    | **Verfügbarkeitsoptionen** | **Verfügbarkeitsgruppe** |
+    | **Verfügbarkeitsgruppe** | ein neuer Verfügbarkeitsgruppenname **z12001a-avset** mit 2 Fehlerdomänen und 5 Updatedomänen |
+    | **Sicherheitstyp** | **Standard** |
+    | **Abbildung** | Wählen Sie **SUSE Enterprise Linux for SAP 15 SP5 – BYOS – x64 Gen 2** aus |
+    | **Mit Azure Spot-Rabatt ausführen** | deaktiviert |
+    | **Größe** | **Standard_D4s_v3** |
     | **Authentifizierungstyp** | **Kennwort** |
     | **Benutzername** | **student** |
     | **Kennwort** | beliebiges komplexes Kennwort Ihrer Wahl |
    
     > **Hinweis:** Stellen Sie sicher, dass Sie sich das Kennwort merken, das Sie während der Bereitstellung angegeben haben. Sie benötigen diese später in diesem Lab.
 
-    > **Hinweis:** Um das Bild zu finden, klicken Sie auf den **Link "Alle Bilder** anzeigen", geben **Sie** im Suchtextfeld im Suchtextfeld **SUSE Enterprise Linux** ein, und klicken Sie in der Ergebnisliste auf **SUSE Enterprise Linux für SAP 15 SP3 – BYOS**, und wählen Sie** "Generation 2 " ** aus.
+    > **Hinweis**: Um das Bild zu finden, klicken Sie auf den Link **Alle Bilder anzeigen**, auf dem Blatt **Bild auswählen**. Geben Sie in das Suchfeld **SUSE Enterprise Linux** ein und klicken Sie in der Ergebnisliste auf **SUSE Enterprise Linux for SAP 15 SP5 – BYOS** und wählen Sie **Generation 2** aus.
 
 1. Geben Sie auf dem auf der **Registerkarte **Virtuellen **Computer erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Netzwerk->** (alle anderen Einstellungen mit ihrem Standardwert belassen):
 
@@ -96,32 +96,38 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
     | **Typ des Betriebssystemdatenträgers** | **Premium SSD (lokal redundanter Speicher)**  |
     | **Schlüsselverwaltung** | **Plattformseitig verwalteter Schlüssel** |
 
-1. Geben Sie auf der Registerkarte **Networking** des Blatts **"Erstellen eines virtuellen Computers** " die folgenden Einstellungen an und wählen Sie **Weiter aus: Verwaltung >** (alle anderen Einstellungen mit ihrem Standardwert belassen):
+1. Klicken Sie auf die Registerkarte **Networking** des Blatts **Virtuellen Computer erstellen** im Abschnitt **Netzwerkschnittstelle** direkt unter dem Textfeld **Virtuelles Netzwerk**, wählen Sie **Neu erstellen** aus. 
+1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** die folgenden Einstellungen an und wählen Sie anschließend **OK** aus:
 
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Virtuelles Netzwerk** | *wählen Sie* **Neu** *erstellen und ein neues virtuelles Netzwerk namens* **az12001a-RG-vnet-** erstellen, fahren Sie mit den nächsten Schritten unter "Erstellen eines virtuellen Netzwerks" fort.  |
-    | **Adressraum** | *Legen Sie den Adressraum des neuen virtuellen Netzwerks auf***192.168.0.0/20 fest** |
+    | **Name** | **az12001a-RG-vnet** |
+    | **Adressraum** | **192.168.0.0/20** |
     | **Subnetzname** | **subnet-0** |
-    | **Subnetzadressbereich** | **192.168.0.0/24**, wählen Sie "OK" aus, um mit "Erstellen eines virtuellen Computers" fortzufahren.|
-    | **Öffentliche IP-Adresse** | **none** |
+    | **Adressbereich** | **192.168.0.0/24** |
+
+1. Geben Sie auf der Registerkarte **Networking** des Blatts **Erstellen eines virtuellen Computers** die folgenden Einstellungen an und wählen Sie **Weiter: Verwaltung >** aus (alle anderen Einstellungen mit ihrem Standardwert belassen):
+
+    | Einstellung | Wert |
+    |   --    |  --   |
+    | **Öffentliche IP-Adresse** | **Keine** |
     | **NIC-Netzwerksicherheitsgruppe** | **Erweitert**  |
-    | **Aktivieren des beschleunigten Netzwerkbetriebs** | **Ein** |
-    | **Optionen für den Lastenausgleich** | **Keine** |
+    | **Aktivieren des beschleunigten Netzwerkbetriebs** | enabled |
+    | **Optionen für den Lastenausgleich** | **None** |
     
-    > **Hinweis:** Dieses Bild verfügt über vorkonfigurierte NSG-Regeln.
+    > **Hinweis:** Diese Bereitstellung hat vorkonfigurierte NSG-Regeln.
 
 1. Klicken Sie auf **Verwaltung** und geben Sie auf der Registerkarte **Virtuellen Computer erstellen**die folgenden Einstellungen ein und wählen Sie ** Weiter aus: Überwachung >** (behalten Sie alle anderen Einstellungen mit ihrem Standardwert bei):
    
    | Einstellung | Wert |
    |   --    |  --   |
-   | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | **Deaktiviert** |
-   | **Automatisches Herunterfahren aktivieren** | **Deaktiviert** |
-   | **Kostenlosen Basic-Plan aktivieren** | **Nein**  |
+   | **Kostenlosen Basic-Plan aktivieren** | deaktiviert |
+   | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | deaktiviert |
+   | **Automatisches Herunterfahren aktivieren** | deaktiviert  |
 
    > **Hinweis:** Der **grundlegende Plan für die kostenlose** Einstellung ist nicht verfügbar, wenn Sie Microsoft Defender für Cloud bereits in Ihrem Abonnement aktiviert haben.
 
-1. Wählen Sie auf der **Registerkarte "Überwachung** " des **Blatts "Erstellen eines virtuellen Computers** " die Option "Weiter" aus **: Erweitert >** (alle Einstellungen mit ihrem Standardwert belassen)
+1. Wählen Sie auf der Registerkarte **Überwachung** des Blatts **Erstellen eines virtuellen Computers** die Option **Weiter: Erweitert >** aus (alle Einstellungen mit ihrem Standardwert belassen)
 
 1. Geben Sie auf der **Registerkarte "Erweitert** " des **Blatts "Erstellen eines virtuellen Computers** " die folgenden Einstellungen an, und wählen Sie **"Überprüfen und erstellen"** aus (belassen Sie alle anderen Einstellungen mit ihrem Standardwert):
 
@@ -139,21 +145,21 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
    
     | Einstellung | Wert |
     |   --    |  --   |
-    | **Abonnement** | *der Name Ihres Azure-Abonnements*  |
-    | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
-    | **Name des virtuellen Computers** | *Wählen Sie* **az12001a-vm1** |
-    | **Region** | *dieselbe Azure-Region, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben* |
-    | **Verfügbarkeitsoptionen** | *Wählen* Sie** die Verfügbarkeitsgruppe aus** |
+    | **Abonnement** | der Name Ihres Azure-Abonnements |
+    | **Ressourcengruppe** | Name der zuvor in dieser Aufgabe erstellten Ressourcengruppe |
+    | **Name des virtuellen Computers** | **az12001a-vm1** |
+    | **Region** | Name derselben Azure-Region, die Sie beim Erstellen der Näherungsplatzierungsgruppe ausgewählt haben |
+    | **Verfügbarkeitsoptionen** | **Verfügbarkeitsgruppe** |
     | **Verfügbarkeitsgruppe** | **az12001a-avset** |
-    | **Sicherheitstyp** | *Wählen*** Sie Standard aus** |
-    | **Image** | *Wählen Sie* ***SUSE Enterprise Linux for SAP 15 SP3 - BYOS - x64 Gen 2 aus** |
-    | **Mit Azure Spot-Rabatt ausführen** | **Nein** |
-    | **Größe** | **Standard D4s v3** |
+    | **Sicherheitstyp** | **Standard** |
+    | **Abbildung** | Wählen Sie **SUSE Enterprise Linux for SAP 15 SP5 – BYOS – x64 Gen 2** aus |
+    | **Mit Azure Spot-Rabatt ausführen** | deaktiviert |
+    | **Größe** | **Standard_D4s_v3** |
     | **Authentifizierungstyp** | **Kennwort** |
     | **Benutzername** | **student** |
     | **Kennwort** | dasselbe Kennwort, das Sie während der ersten Bereitstellung angegeben haben |
    
-   > **Hinweis:** Um das Bild zu finden, klicken Sie auf den **Link "Alle Bilder** anzeigen", geben **Sie** im Suchtextfeld im Suchtextfeld **SUSE Enterprise Linux** ein, und klicken Sie in der Ergebnisliste auf **SUSE Enterprise Linux für SAP 15 SP3 – BYOS**, und wählen Sie** "Generation 2 " ** aus.
+    > **Hinweis**: Um das Bild zu finden, klicken Sie auf den Link **Alle Bilder anzeigen**, auf dem Blatt **Bild auswählen**. Geben Sie in das Suchfeld **SUSE Enterprise Linux** ein und klicken Sie in der Ergebnisliste auf **SUSE Enterprise Linux for SAP 15 SP5 – BYOS** und wählen Sie **Generation 2** aus.
 
 1. Geben Sie auf dem auf der **Registerkarte **Virtuellen **Computer erstellen** die folgenden Einstellungen an und wählen Sie **Weiter: Netzwerk->** (alle anderen Einstellungen mit ihrem Standardwert belassen):
 
@@ -168,26 +174,24 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
     |   --    |  --   |
     | **Virtuelles Netzwerk** | **az12001a-RG-vnet** |
     | **Subnetz** | **subnet-0 (192.168.0.0/24)** |
-    | **Öffentliche IP-Adresse** | **none** |
+    | **Öffentliche IP-Adresse** | **Keine** |
     | **NIC-Netzwerksicherheitsgruppe** | **Erweitert**  |
     | **Aktivieren des beschleunigten Netzwerkbetriebs** | **Ein** |
-    | **Optionen für den Lastenausgleich** | **Keine** |
-
-   > **Hinweis:** Dieses Bild verfügt über vorkonfigurierte NSG-Regeln.
+    | **Optionen für den Lastenausgleich** | **None** |
 
 1. Klicken Sie auf **Verwaltung** und geben Sie auf der Registerkarte **Virtuellen Computer erstellen**die folgenden Einstellungen ein und wählen Sie ** Weiter aus: Überwachung >** (behalten Sie alle anderen Einstellungen mit ihrem Standardwert bei):
     
    | Einstellung | Wert |
    |   --    |  --   |
-   | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | **Deaktiviert** |
-   | **Automatisches Herunterfahren aktivieren** | **Deaktiviert** |
-   | **Kostenlosen Basic-Plan aktivieren** | **Nein**  |
+   | **Kostenlosen Basic-Plan aktivieren** | deaktiviert |
+   | **Aktivieren einer systemseitig zugewiesenen verwalteten Identität** | deaktiviert |
+   | **Automatisches Herunterfahren aktivieren** | deaktiviert |
 
    > **Hinweis:** Der **grundlegende Plan für die kostenlose** Einstellung ist nicht verfügbar, wenn Sie bereits den Azure Security Center-Plan ausgewählt haben.
 
-1.  Wählen Sie auf der **Registerkarte "Überwachung** " des **Blatts "Erstellen eines virtuellen Computers** " die Option "Weiter" aus **: Erweitert >** (alle Einstellungen mit ihrem Standardwert belassen)
+1.  Wählen Sie auf der Registerkarte **Überwachung** des Blatts **Erstellen eines virtuellen Computers** die Option **Weiter: Erweitert >** aus (alle Einstellungen mit ihrem Standardwert belassen)
 
-1.  Geben Sie auf der **Registerkarte "Erweitert** " des **Blatts "Erstellen eines virtuellen Computers** " die folgenden Einstellungen an, und wählen Sie **"Überprüfen und erstellen"** aus (belassen Sie alle anderen Einstellungen mit ihrem Standardwert):
+1.  Stellen Sie auf der Registerkare **Erweitert** des Blatts **Erstellen eines virtuellen Computers** sicher, dass die folgenden Einstellungen konfiguriert sind, und wählen Sie **Überprüfen + erstellen** aus (alle anderen Einstellungen mit ihrem Standardwert belassen):
     
    | Einstellung | Wert |
    |   --    |  --   |
@@ -204,7 +208,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
    > **Hinweis:** Wenn Sie Cloud Shell zum ersten Mal im aktuellen Azure-Abonnement starten, werden Sie aufgefordert, eine Azure-Dateifreigabe zu erstellen, um Cloud Shell-Dateien beizubehalten. Akzeptieren Sie in diesem Falls die Standardwerte, was dazu führt, dass ein Speicherkonto in einer automatisch generierten Ressourcengruppe erstellt wird.
 
-1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um den Wert der Variablen `RESOURCE_GROUP_NAME` auf den Namen der Ressourcengruppe festzulegen, die die Ressourcen enthält, die Sie im vorherigen Vorgang bereitgestellt haben:
+1. Führen Sie im Cloud Shell-Bereich den folgenden Befehl aus, um den Wert der Variablen `RESOURCE_GROUP_NAME` auf den Namen der Ressourcengruppe festzulegen, die die Ressourcen enthält, die Sie in der vorherigen Aufgabe bereitgestellt haben:
 
    ```cli
    RESOURCE_GROUP_NAME='az12001a-RG'
@@ -224,6 +228,8 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
    for I in {0..7}; do az disk create --resource-group $RESOURCE_GROUP_NAME --name az12001a-vm1-DataDisk$I --size-gb 128 --location $LOCATION --sku Premium_LRS; done
    ```
 
+1. Schließen Sie den Cloud Shell-Bereich.
+
 1. Navigieren Sie im Azure-Portal zum Blatt der ersten Azure-VM, die Sie in der vorherigen Aufgabe bereitgestellt haben (**az12001a-vm0**).
 
 1. Navigieren Sie vom **Blatt "az12001a-vm0** " zum **Blatt "az12001a-vm0 \| Disks** ".
@@ -234,7 +240,7 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
    |   --    |  --   |
    | **LUN** | **0** |
    | **Name des Datenträgers** | **az12001a-vm0-DataDisk0** |
-   | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
+   | **Ressourcengruppe** | Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in dieser Aufgabe verwendet haben. |
    | **HOSTZWISCHENSPEICHERUNG** | **Schreibgeschützt** |
 
 2. Wiederholen Sie den vorherigen Schritt, um die verbleibenden 7 Datenträger mit dem Präfix **az12001a-vm0-DataDisk** (für die Summe von 8) anzufügen. Weisen Sie die LUN-Nummer zu, die dem letzten Zeichen des Datenträgernamens entsprechen. Legen Sie DIE HOSTZWISCHENSPEICHERÚNG des Datenträgers mit LUN **1** auf **schreibgeschützt** fest und legen Sie für alle verbleibenden HOSTZWISCHENSPEICHERUNG auf **"Keine"** fest.
@@ -251,10 +257,10 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
    |   --    |  --   |
    | **LUN** | **0** |
    | **Name des Datenträgers** | **az12001a-vm1-DataDisk0** |
-   | **Ressourcengruppe** | *Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in diesem Vorgang verwendet haben* |
+   | **Ressourcengruppe** | Wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in dieser Aufgabe verwendet haben. |
    | **HOSTZWISCHENSPEICHERUNG** | **Schreibgeschützt** |
 
-7. Wiederholen Sie den vorherigen Schritt, um die verbleibenden 7 Datenträger mit dem Präfix **az12001a-vm1-DataDisk** (für die Summe von 8) anzufügen. Weisen Sie die LUN-Nummer zu, die dem letzten Zeichen des Datenträgernamens entsprechen. Legen Sie DIE HOSTZWISCHENSPEICHERÚNG des Datenträgers mit LUN **1** auf **schreibgeschützt** fest und legen Sie für alle verbleibenden HOSTZWISCHENSPEICHERUNG auf **"Keine"** fest.
+7. Wiederholen Sie den vorherigen Schritt, um die verbleibenden 7 Datenträger mit dem Präfix **az12001a-vm1-DataDisk** (für die Summe von 8) anzufügen. Weisen Sie die LUN-Nummer zu, die dem letzten Zeichen des Datenträgernamens entsprechen. Legen Sie für HOSTZWISCHENSPEICHERÚNG des Datenträgers mit LUN \ **1** **Schreibgeschützt** fest und legen Sie für alle verbleibenden Datenträger für HOSTZWISCHENSPEICHERUNG **Keine** fest.
 
 8. Speichern Sie die Änderungen. 
 
@@ -298,7 +304,6 @@ In dieser Übung stellen Sie Azure-Infrastruktur-Computerkomponenten bereit, die
 
    > **Hinweis:** Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit der nächsten Aufgabe dieser Übung fortfahren. Die Bereitstellung kann ungefähr 5 Minuten dauern.
 
-
 > **Result**: Nachdem Sie diese Übung abgeschlossen haben, haben Sie Azure-Computerressourcen bereitgestellt, die erforderlich sind, um hoch verfügbare SAP HANA-Bereitstellungen zu unterstützen.
 
 
@@ -320,19 +325,19 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Führen Sie in der Bastion-Sitzung auf die **Azure-VM az12001a-vm0** den folgenden Befehl aus, um Rechte zu erhöhen: 
 
-   ```cli
+   ```sh
    sudo su -
    ```
 
 1. Führen Sie den folgenden Befehl aus, um die Zuordnung zwischen den neu angeschlossenen Geräten und deren LUN-Nummern zu identifizieren:
    
-   ```cli
+   ```sh
    lsscsi
    ```
 
 1. Erstellen Sie physische Volumes für 6 (von 8) Datenträgern, indem Sie Folgendes ausführen:
    
-   ```cli
+   ```sh
    pvcreate /dev/sdc
    pvcreate /dev/sdd
    pvcreate /dev/sde
@@ -343,7 +348,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Erstellen Sie Volumengruppen, indem Sie Folgendes ausführen:
    
-   ```cli
+   ```sh
    vgcreate vg_hana_data /dev/sdc /dev/sdd
    vgcreate vg_hana_log /dev/sde /dev/sdf
    vgcreate vg_hana_backup /dev/sdg /dev/sdh
@@ -351,7 +356,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Erstellen Sie logische Volumes, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    lvcreate -l 100%FREE -n hana_data vg_hana_data
    lvcreate -l 100%FREE -n hana_log vg_hana_log
    lvcreate -l 100%FREE -n hana_backup vg_hana_backup
@@ -361,7 +366,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Formatieren Sie die logischen Volumes, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    mkfs.xfs /dev/vg_hana_data/hana_data -m crc=1
    mkfs.xfs /dev/vg_hana_log/hana_log -m crc=1
    mkfs.xfs /dev/vg_hana_backup/hana_backup -m crc=1
@@ -371,7 +376,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Partitionieren Sie den **Datenträger "/dev/sdi** ", indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    fdisk /dev/sdi
    ```
 
@@ -379,7 +384,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Partitionieren Sie den **Datenträger "/dev/sdj** ", indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    fdisk /dev/sdj
    ```
 
@@ -387,14 +392,14 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Formatieren Sie die neu erstellte Partition, indem Sie ausgeführt werden (geben Sie `y` die **EINGABETASTE** ein, wenn Sie zur Bestätigung aufgefordert werden):
 
-   ```cli
+   ```sh
    mkfs.xfs /dev/sdi -m crc=1 -f
    mkfs.xfs /dev/sdj -m crc=1 -f
    ```
 
 1. Erstellen Sie die Verzeichnisse, die als Bereitstellungspunkte dienen, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    mkdir -p /hana/data
    mkdir -p /hana/log
    mkdir -p /hana/backup
@@ -404,7 +409,7 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Zeigen Sie die IDs logischer Volumes an, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    blkid
    ```
 
@@ -413,13 +418,17 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Öffnen Sie **/etc/fstab** im vi-Editor (Sie können einen anderen Editor verwenden), indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    vi /etc/fstab
    ```
 
+   > **Hinweis**: Wenn Sie den vi-Editor verwenden, drücken Sie die Taste **i**, um in den INSERT-Modus zu gelangen.
+
+   ![Modusanzeige vi Editor INSERT-Modus](../media/az120-lab01-vieditor-insert.png)
+
 1. Fügen Sie im Editor die folgenden Einträge zu **/etc/fstab** hinzu (wobei `\<UUID of /dev/vg\_hana\_data-hana\_data\>`,`\<UUID of /dev/vg\_hana\_log-hana\_log\>`, `\<UUID of /dev/vg\_hana\_backup-hana\_backup\>`, `\<UUID of /dev/vg_hana_shared-hana_shared (/dev/sdi)\>`und `\<UUID of /dev/vg_usr_sap-usr_sap (/dev/sdj)\>`, die IDs darstellen, die Sie im vorherigen Schritt identifiziert haben):
 
-   ```cli
+   ```sh
    /dev/disk/by-uuid/<UUID of /dev/vg_hana_data-hana_data> /hana/data xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<UUID of /dev/vg_hana_log-hana_log> /hana/log xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<UUID of /dev/vg_hana_backup-hana_backup> /hana/backup xfs  defaults,nofail  0  2
@@ -431,181 +440,93 @@ In dieser Übung konfigurieren Sie das Betriebssystem und den Speicher auf Azure
 
 1. Stellen Sie die neuen Volumes bereit, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    mount -a
    ```
 
 1. Überprüfen Sie, ob die Bereitstellung erfolgreich war, indem Sie Folgendes ausführen:
 
-   ```cli
+   ```sh
    df -h
    ```
 
-1. Wechseln Sie zur Bastion-Sitzung zu az12001a-vm1, und wiederholen Sie alle Schritte in diesen Aufgaben, um den Speicher auf **az12001a-vm1**zu konfigurieren.
+   ![df-h-Ausgabe](../media/az120-lab01-df-output.png)
+1. Beenden Sie den privilegierten Modus wie folgt:
+
+   ```sh
+   exit
+   ```
+
+1. Wechseln Sie zur Bastion-Sitzung zu **az12001a-vm1** und wiederholen Sie alle Schritte in diesen Aufgaben, um den Speicher auf **az12001a-vm1** zu konfigurieren.
 
 
 ### Aufgabe 3: Aktivieren des knotenübergreifenden Kennworts ohne SSH-Zugriff
 
-1. Generieren Sie in der Bastion-Sitzung an der **az12001a-vm0** Azure VM den passphrasenlosen SSH-Schlüssel, indem Sie Folgendes ausführen:
+1. Generieren Sie in der Bastion-Sitzung auf der ** az12001a-vm1** ein passphrasenloses SSH-Schlüsselpaar, indem Sie Folgendes ausführen:
 
-   ```cli
-   ssh-keygen -tdsa
+      ```sh
+   ssh-keygen -trsa
    ```
 
-1. Wenn Sie dazu aufgefordert werden, **drücken Sie** dreimal den öffentlichen Schlüssel, und zeigen Sie dann die öffentliche Taste an, indem Sie Folgendes ausführen: 
+1. Wenn Sie dazu aufgefordert werden, drücken Sie dreimal die **EINGABETASTE**.
 
-   ```cli
-   cat /root/.ssh/id_dsa.pub
+1. Kopieren Sie den öffentlichen Schlüssel des neu generierten Schlüsselpaars wie folgt in **az12001a-vm0**:
+
+      ```sh
+   ssh-copy-id -i /home/student/.ssh/id_rsa.pub student@az12001a-vm0
    ```
 
-1. Kopieren Sie den Wert des Schlüssels in die Zwischenablage.
+1. Wenn Sie aufgefordert werden, zu bestätigen, ob Sie die Verbindung fortsetzen möchten, geben Sie **ja** ein, und drücken die **EINGABETASTE** .
 
-1. Wechseln Sie zur Bastion-Sitzung zur **Azure-VM az12001a-vm1** und erstellen Sie eine Datei **/root/.ssh/autorisierte\_Schlüssel** im vi-Editor (Sie können einen anderen Editor verwenden), indem Sie Folgendes ausführen:
+1. Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie das Kennwort ein, das Sie beim Bereitstellen **von az12001a-vm0** weiter oben in dieser Übung festgelegt haben.
 
-   ```cli
-   vi /root/.ssh/authorized_keys
+1. Wechseln Sie zur Bastion-Sitzung zur **az12001a-vm0** Azure VM.
+
+1. Generieren Sie in der Bastion-Sitzung am **az12001a-vm0** den passphrasenlosen SSH-Schlüssel, indem Sie Folgendes ausführen:
+
+      ```sh
+   ssh-keygen -trsa
    ```
 
-1. Fügen Sie im Editorfenster den Schlüssel ein, den Sie auf az12001a-vm0 generiert haben.
+1. Wenn Sie dazu aufgefordert werden, drücken Sie dreimal die **EINGABETASTE**.
 
-1. Speichern Sie die Änderungen, und schließen Sie den Editor.
+1. Kopieren Sie den öffentlichen Schlüssel des neu generierten Schlüsselpaars zum **az12001a-vm1**, indem Sie Folgendes ausführen:
 
-1. Generieren Sie in der Bastion-Sitzung auf der **Azure-VM az12001a-vm1** passphrase-weniger SSH-Schlüssel, indem Sie Folgendes ausführen:
-
-   ```cli
-   ssh-keygen -tdsa
+      ```sh
+   ssh-copy-id -i /home/student/.ssh/id_rsa.pub student@az12001a-vm1
    ```
 
-1. Wenn Sie dazu aufgefordert werden, **drücken Sie** dreimal den öffentlichen Schlüssel, und zeigen Sie dann die öffentliche Taste an, indem Sie Folgendes ausführen: 
+1. Wenn Sie aufgefordert werden, zu bestätigen, ob Sie die Verbindung fortsetzen möchten, geben Sie **ja** ein, und drücken die **EINGABETASTE** .
 
-   ```cli
-   cat /root/.ssh/id_dsa.pub
+1. Wenn Sie zur Authentifizierung aufgefordert werden, geben Sie das Kennwort ein, das Sie beim Bereitstellen von **az12001a-vm1** weiter oben in dieser Übung festgelegt haben.
+
+1. Um zu überprüfen, ob die Konfiguration erfolgreich war, richten Sie in der Bastion-Sitzung am **az12001a-vm0** eine SSH-Sitzung als **Student** von **az12001a-vm1** ein, indem Sie Folgendes ausführen: 
+
+   ```sh
+   ssh student@az12001a-vm1
    ```
-
-1. Kopieren Sie den Wert des Schlüssels in die Zwischenablage.
-
-1. Wechseln Sie zur Bastion-Sitzung zur **az12001a-vm0** Azure VM und erstellen Sie eine Datei **/root/.ssh/autorisierte\_Schlüssel** im vi-Editor (Sie können jeden anderen Editor verwenden), indem Sie Folgendes ausführen:
-
-   ```cli
-   vi /root/.ssh/authorized_keys
-   ```
-
-1. Fügen Sie im Editorfenster den Schlüssel ein, den Sie auf az12001a-vm1 generiert haben.
-
-1. Speichern Sie die Änderungen, und schließen Sie den Editor.
-
-1. Generieren Sie in der Bastion-Sitzung an der **az12001a-vm0** Azure VM den passphrasenlosen SSH-Schlüssel, indem Sie Folgendes ausführen:
-
-   ```cli
-   ssh-keygen -t rsa
-   ```
-
-1. Wenn Sie dazu aufgefordert werden, **drücken Sie** dreimal den öffentlichen Schlüssel, und zeigen Sie dann die öffentliche Taste an, indem Sie Folgendes ausführen: 
-
-   ```cli
-   cat /root/.ssh/id_rsa.pub
-   ```
-
-1. Kopieren Sie den Wert des Schlüssels in die Zwischenablage.
-
-1. Wechseln Sie zur Bastion-Sitzung zur **Azure-VM az12001a-vm1** und öffnen Sie die Datei **"/root/.ssh/authorized\_"-Schlüssel** im vi-Editor (Sie können jeden anderen Editor verwenden), indem Sie Folgendes ausführen:
-
-   ```cli
-   vi /root/.ssh/authorized_keys
-   ```
-
-1. Fügen Sie im Editorfenster beginnend mit einer neuen Zeile den Schlüssel ein, den Sie auf az12001a-vm0 generiert haben.
-
-1. Speichern Sie die Änderungen, und schließen Sie den Editor.
-
-1. Generieren Sie in der Bastion-Sitzung auf der **Azure-VM az12001a-vm1** passphrase-weniger SSH-Schlüssel, indem Sie Folgendes ausführen:
-
-   ```cli
-   ssh-keygen -t rsa
-   ```
-
-1. Wenn Sie dazu aufgefordert werden, **drücken Sie** dreimal den öffentlichen Schlüssel, und zeigen Sie dann die öffentliche Taste an, indem Sie Folgendes ausführen: 
-
-   ```cli
-   cat /root/.ssh/id_rsa.pub
-   ```
-
-1. Kopieren Sie den Wert des Schlüssels in die Zwischenablage.
-
-1. Wechseln Sie zur Bastion-Sitzung zur **az12001a-vm0** Azure VM, und öffnen Sie die Datei **/root/.ssh/autorisierte\_Schlüssel** im vi-Editor (Sie können einen anderen Editor verwenden), indem Sie Folgendes ausführen:
-
-   ```cli
-   vi /root/.ssh/authorized_keys
-   ```
-
-1. Fügen Sie im Editorfenster beginnend mit einer neuen Zeile den Schlüssel ein, den Sie auf az12001a-vm1 generiert haben.
-
-1. Speichern Sie die Änderungen, und schließen Sie den Editor.
-
-1. Öffnen Sie in der Bastion-Sitzung auf der **azure-VM az12001a-vm0** die Datei **/etc/ssh/sshd\_config** im vi-Editor (Sie können einen anderen Editor verwenden), indem Sie Folgendes ausführen:
-
-   ```cli
-   vi /etc/ssh/sshd_config
-   ```
-
-1. Suchen Sie in der **Konfigurationsdatei "/etc/sshd\_"** die **Einträge "PermitRootLogin** " und **"AuthorizedKeysFile** " und konfigurieren Sie sie wie folgt (entfernen Sie bei Bedarf das führende **#** Zeichen:
-
-   ```cli
-   PermitRootLogin yes
-   AuthorizedKeysFile  /root/.ssh/authorized_keys
-   ```
-
-1. Speichern Sie die Änderungen, und schließen Sie den Editor.
-
-1. Starten Sie innerhalb der Bastion-Sitzung auf der **az12001a-vm0** Azure VM sshd daemon neu, indem Sie Folgendes ausführen:
-
-   ```cli
-   systemctl restart sshd
-   ```
-
-1. Wiederholen Sie die vorherigen vier Schritte auf az12001a-vm1.
-
-1. Um zu überprüfen, ob die Konfiguration erfolgreich war, richten Sie in der Bastion-Sitzung an die **az12001a-vm0 Azure VM eine** SSH-Sitzung als **Stamm** von az12001a-vm0 zu az12001a-vm1 ein, indem Sie Folgendes ausführen: 
-
-   ```cli
-   ssh root@az12001a-vm1
-   ```
-
-1. Wenn Sie gefragt werden, ob Sie die Verbindung fortsetzen möchten, geben Sie `yes` ein und drücken Sie die **EINGABETASTE**. 
 
 1. Stellen Sie sicher, dass Sie nicht zur Eingabe des Kennworts aufgefordert werden.
 
-1. Schließen Sie die SSH-Sitzung von az12001a-vm0 auf az12001a-vm1, indem Sie Folgendes ausführen: 
+1. Schließen Sie die SSH-Sitzung von **az12001a-vm0** auf **az12001a-vm1**, indem Sie Folgendes ausführen: 
 
-   ```cli
+   ```sh
    exit
    ```
 
-1. Melden Sie sich von az12001a-vm0 ab, indem Sie die folgenden zwei Mal ausführen:
+1. Wechseln Sie zur Bastion-Sitzung zum **Azure-VM az12001a-vm1**.
 
-   ```cli
-   exit
+1. Richten Sie innerhalb der Bastion-Sitzung auf **az12001a-vm1** eine SSH-Sitzung als Student** für ****az12001a-vm0** ein, indem Sie Folgendes ausführen: 
+
+   ```sh
+   ssh student@az12001a-vm0
    ```
-
-1. Um zu überprüfen, ob die Konfiguration erfolgreich war, richten Sie in der Bastion-Sitzung auf **az12001a-vm1**eine SSH-Sitzung als **Stamm** von az12001a-vm1 zu az12001a-vm0 ein, indem Sie Folgendes ausführen: 
-
-   ```cli
-   ssh root@az12001a-vm0
-   ```
-
-1. Wenn Sie gefragt werden, ob Sie die Verbindung fortsetzen möchten, geben Sie `yes` ein und drücken Sie die **EINGABETASTE**. 
 
 1. Stellen Sie sicher, dass Sie nicht zur Eingabe des Kennworts aufgefordert werden.
 
-1. Schließen Sie die SSH-Sitzung von az12001a-vm1 auf az12001a-vm0, indem Sie Folgendes ausführen: 
+1. Schließen Sie die SSH-Sitzung von **az12001a-vm1** auf **az12001a-vm0**, indem Sie Folgendes ausführen: 
 
-   ```cli
-   exit
-   ```
-
-1. Melden Sie sich von az12001a-vm1 ab, indem Sie die folgenden zwei Mal ausführen:
-
-   ```cli
+   ```sh
    exit
    ```
 
@@ -650,10 +571,10 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
     
    | Einstellung | Wert |
    |   --    |  --   |
-   | **Abonnement** | *der Name Ihres Azure-Abonnements* |
-   | **Ressourcengruppe** | *wählen Sie den Namen der Ressourcengruppe aus, die Sie zuvor in dieser Übung verwendet haben* |
+   | **Abonnement** | der Name Ihres Azure-Abonnements |
+   | **Ressourcengruppe** | **az12001a-RG** |
    | **Name** | **az12001a-lb0** |
-   | **Region** | *dieselbe Azure-Region, in der Sie Azure-VMs in der ersten Übung dieses Labors bereitgestellt haben* |
+   | **Region** | dieselbe Azure-Region, in der Sie Azure-VMs in der ersten Übung dieses Labors bereitgestellt haben |
    | **SKU** | **Standard** |
    | **Typ** | **Intern** |
 
@@ -692,7 +613,6 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
    | **Protokoll** | **TCP** |
    | **Port** | **62500** |
    | **Intervall** | **5** *Sekunden* |
-   | **Fehlerhafter Schwellenwert** | **Zwei *** aufeinanderfolgende Fehler* |
 
 1. Wählen Sie auf dem **Blatt az12001a-lb0** die Option **Lastenausgleichsregeln**aus, wählen Sie **+Hinzufügen aus, und geben Sie auf dem Blatt** "Lastenausgleichsregel hinzufügen"** die folgenden Einstellungen ** an (lassen Sie andere mit ihren Standardwerten):
     
@@ -701,13 +621,13 @@ In dieser Übung implementieren Sie Azure Load Balancers, um gruppierte Installa
    | **Name** | **az12001a-lb0-lbruleAll** |
    | **IP-Version** | **IPv4** |
    | **Frontend IP address** (Front-End-IP-Adresse) | **192.168.0.240 (LoadBalancerFrontEnd)** |
-   | **Hochverfügbarkeitsports** | **Enabled** |
+   | **Hochverfügbarkeitsports** | enabled |
    | **Back-End-Pool** | **az12001a-lb0-bepool (2 virtual machines)** |
    | **Integritätstest** | **az12001a-lb0-hprobe (TCP:62500)** |
    | **Sitzungspersistenz** | **None** |
    | **Leerlaufzeitüberschreitung (Minuten)** | **4** |
-   | **TCP-Zurücksetzung** | **Disabled** |
-   | **Floating IP (Direct Server Return)** | **Enabled** |
+   | **TCP-Zurücksetzung** | deaktiviert |
+   | **Floating IP (Direct Server Return)** | enabled |
 
 ### Aufgabe 3: Erstellen und Konfigurieren von Azure Load Balancers für ausgehenden Datenverkehr
 
