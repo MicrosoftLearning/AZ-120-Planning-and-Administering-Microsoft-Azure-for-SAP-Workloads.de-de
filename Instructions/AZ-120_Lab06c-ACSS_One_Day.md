@@ -228,9 +228,9 @@ Diese Aktivität entspricht der folgenden Aufgabe dieser Übung:
     |Anwendungssubnetz|**app**|
     |Datenbanksubnetz|**db**|
     |Imageoptionen für Anwendungsbetriebssysteme|**Verwenden eines Marketplace-Images**|
-    |Anwendungsbetriebssystemimage|**Red Hat Enterprise Linux 8.6 für SAP-Anwendungen – x64 Gen2 neueste Version**|
+    |Anwendungsbetriebssystemimage|**Red Hat Enterprise Linux 8.4 für SAP-Anwendungen – x64 Gen2 neueste Version**|
     |Optionen für Datenbankbetriebssystemimages|**Verwenden eines Marketplace-Images**|
-    |Datenbankbetriebssystemimage|**Red Hat Enterprise Linux 8.6 für SAP-Anwendungen – x64 Gen2 neueste Version**|
+    |Datenbankbetriebssystemimage|**Red Hat Enterprise Linux 8.4 für SAP-Anwendungen – x64 Gen2 neueste Version**|
     |SAP-Transportoption|**Erstellen eines neuen SAP-Transportverzeichnisses**|
     |Transportressourcengruppe|**acss-infra-RG**|
     |Speicherkontoname|*leer*|
@@ -241,6 +241,8 @@ Diese Aktivität entspricht der folgenden Aufgabe dieser Übung:
     |SQP-FQDN|**sap.contoso.com**|
     |Quelle für verwaltete Identität|**Vorhandene benutzerseitig zugewiesene verwaltete Identität verwenden**|
     |Name der verwalteten Identität|**acss-infra-MI**|
+
+    >**Hinweis**: Stellen Sie sicher, dass Sie **Red Hat Enterprise Linux 8.4 für SAP-Anwendungen – x64 Gen2 neueste Version** auswählen.
 
 1. Geben Sie auf der Registerkarte **VMs** die folgenden Einstellungen an:
 
