@@ -129,7 +129,7 @@ Die Übung umfasst die folgenden Aufgaben:
     |---|---|
     |Subscription|Der Name des Azure-Abonnements, das Sie in diesem Lab verwenden|
     |Resource group|der Name einer **neuen** Ressourcengruppe: **ACSS-DEMO**|
-    |Speicherkontoname|Ein beliebiger global eindeutiger Name, der zwischen 3 und 24 Zeichen lang ist und aus Buchstaben und Ziffern besteht.|
+    |Speicherkontoname|Ein beliebiger global eindeutiger Name, der zwischen 3 und 24 Zeichen lang ist und aus Buchstaben und Ziffern besteht.|
     |Region|der Name der Azure-Region, in der Sie über ausreichende vCPU-Kontingente zum Ausführen dieses Labs verfügen|
     |Leistung|**Standard**|
     |Redundanz|**Georedundanter Speicher (GRS)**|
@@ -487,8 +487,8 @@ Die Übung besteht aus der folgenden Aufgabe:
     |Virtuelles Netzwerk|**CONTOSO-VNET**|
     |Anwendungssubnetz|**App (10.5.0.0/24)**|
     |Datenbanksubnetz|**Datenbank (10.5.2.0/24)**|
-    |Anwendungsbetriebssystemimage|**Red Hat Enterprise Linux 8.2 für SAP-Anwendungen – neueste x64 Gen2-Version**|
-    |Datenbankbetriebssystemimage|**Red Hat Enterprise Linux 8.2 für SAP-Anwendungen – neueste x64 Gen2-Version**|
+    |Anwendungsbetriebssystemimage|**Red Hat Enterprise Linux 8.4 für SAP-Anwendungen – x64 Gen2 neueste Version**|
+    |Datenbankbetriebssystemimage|**Red Hat Enterprise Linux 8.4 für SAP-Anwendungen – x64 Gen2 neueste Version**|
     |SAP-Transportoption|**Erstellen eines neuen SAP-Transportverzeichnisses**|
     |Transportressourcengruppe|**ACSS-DEMO**|
     |Speicherkontoname|Kein Eintrag|

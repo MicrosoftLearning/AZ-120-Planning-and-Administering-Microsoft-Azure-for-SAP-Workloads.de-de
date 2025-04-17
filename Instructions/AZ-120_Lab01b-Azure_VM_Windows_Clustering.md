@@ -107,7 +107,9 @@ In dieser Übung stellen Sie Azure-Infrastrukturcomputekomponenten bereit, die z
 
     > **Hinweis:** Wenn die Bereitstellung mit einem Fehler, einschließlich der Anweisung `PowerShell DSC resource MSFT_xADDomainController failed to execute Set-TargetResource functionality with error message: Domain 'adatum.com' could not be found`, fehlschlägt, führen Sie die folgenden Schritte aus, um dieses Problem zu beheben:
 
-    - Navigieren Sie im Azure-Portal zum Blatt der VM **adBDC**. Wählen Sie im vertikalen Navigationsmenü auf der linken Seite im Abschnitt **Einstellungen** die Option **Erweiterungen und Anwendungen**, im Bereich **Erweiterungen und Anwendungen** die Option **PrepareBDC** und im Bereich **BDC vorbereiten** die Option **Deinstallieren** aus. 
+    - Navigieren Sie im Azure-Portal zum Blatt **adVNET**. Wählen Sie im vertikalen Navigationsmenü auf der linken Seite im Abschnitt **Einstellungen** die Option **DNS-Server** aus. Löschen Sie auf der Seite **adVNET \| DNS-Server** den Eintrag **10.0. 0.5** und wählen Sie dann **Speichern**.
+      
+    - Navigieren Sie zum Blatt der VM **adBDC**. Wählen Sie im vertikalen Navigationsmenü auf der linken Seite im Abschnitt **Einstellungen** die Option **Erweiterungen + Anwendungen** aus, wählen Sie im Bereich **Erweiterungen + Anwendungen** die Option **PrepareBDC** aus und wählen Sie im Bereich **BDC vorbereiten** die Option **Deinstallieren** aus. 
 
     - Navigieren Sie zurück zum Blatt der VM **adBDC**, und starten Sie die Azure-VM neu.
 
